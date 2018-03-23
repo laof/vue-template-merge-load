@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Vue template merge for webpack",
   "main": "index.js",
+  "bugs":{
+    "url":"https://github.com/laof/vue-template-merge-load/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
