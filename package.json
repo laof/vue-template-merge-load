@@ -11,10 +11,7 @@
   },
   "author": "lovah",
   "license": "MIT",
-  "devDependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "vue-template-compiler": "^2.5.16"
-  },
+  "devDependencies": {},
   "keywords": [
     "Vue",
     "html",
@@ -23,5 +20,8 @@
     "load",
     "replace"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "vue-template-compiler": "^2.5.16"
+  }
 }
