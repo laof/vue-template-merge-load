@@ -47,9 +47,11 @@ function replace(source, options) {
 
   const attr = options.attr
   const vueObj = compiler.parseComponent(source)
+
   const $ = cheerio.load(vueObj.template.content, {
     xmlMode: true, decodeEntities: false
   })
+
 
   $('[' + attr + ']').each(function (i, d) {
     const v = $(d)
@@ -60,9 +62,10 @@ function replace(source, options) {
     }
   })
 
-  source.replace(source.substring(vueObj.start, vueObj.end), $.html())
+  const substr = source.substring(vueObj.template.start, vueObj.template.end)
+  const newStr = source.replace(substr, $.html())
 
-  return source
+  return newStr
 }
 
 module.exports = replace
