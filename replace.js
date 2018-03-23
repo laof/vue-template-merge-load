@@ -1,27 +1,27 @@
-var fs = require('fs')
-var path = require('path')
-var cheerio = require('cheerio')
-var loaderUtils = require('loader-utils')
+const fs = require('fs')
+const path = require('path')
+const cheerio = require('cheerio')
+const compiler = require('vue-template-compiler')
 
 function resolve(dir) {
   return path.join(__dirname, '..', '..', dir)
 }
+
 function url(src, opts) {
   src += ''
-  var _alias= opts._alias
-  var inx = -1;
-  var isAlias =false
+  const _alias = opts._alias
+  let isAlias = false
 
-  for(var i =0;i<_alias.length;i++){
-    inx = src.indexOf(_alias[i])
+  for (const i = 0; i < _alias.length; i++) {
+    const inx = src.indexOf(_alias[i])
     if (inx > -1) {
-      isAlias=true
+      isAlias = true
       src = src.replace(_alias[i], opts.alias[_alias[i]])
       break
     }
   }
 
-  if(!isAlias){
+  if (!isAlias) {
     src = resolve(src)
   }
 
@@ -33,8 +33,8 @@ function target(src) {
     src += '.html'
   }
 
-  var htmlstr = ''
-  
+  let htmlstr = ''
+
   try {
     htmlstr = fs.readFileSync(src);
   } catch (e) {
@@ -45,23 +45,24 @@ function target(src) {
 
 function replace(source, options) {
 
-  var $ = cheerio.load(source, {
+  const attr = options.attr
+  const vueObj = compiler.parseComponent(source)
+  const $ = cheerio.load(vueObj.template.content, {
     xmlMode: true, decodeEntities: false
   })
 
-  var attr = options.attr
-
   $('[' + attr + ']').each(function (i, d) {
-    var v = $(d)
-    var src = (v.attr(attr) +'').replace(/(^\s*)|(\s*$)/g, ""); 
-    if(src!=='' ){
+    const v = $(d)
+    const src = (v.attr(attr) + '').replace(/(^\s*)|(\s*$)/g, "");
+    if (src !== '') {
       v.html(target(url(src, options)))
-      v.attr(attr,'')
+      v.attr(attr, '')
     }
-   
   })
 
-  return $.html()
+  source.replace(source.substring(vueObj.start, vueObj.end), $.html())
+
+  return source
 }
 
 module.exports = replace

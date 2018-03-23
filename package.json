@@ -3,15 +3,18 @@
   "version": "1.0.1",
   "description": "Vue template merge for webpack",
   "main": "index.js",
-  "bugs":{
-    "url":"https://github.com/laof/vue-template-merge-load/issues"
+  "bugs": {
+    "url": "https://github.com/laof/vue-template-merge-load/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node  ./test/test.js"
   },
   "author": "lovah",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "vue-template-compiler": "^2.5.16"
+  },
   "keywords": [
     "Vue",
     "html",
@@ -20,7 +23,5 @@
     "load",
     "replace"
   ],
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.2"
-  }
+  "dependencies": {}
 }
