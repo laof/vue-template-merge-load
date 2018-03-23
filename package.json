@@ -1,0 +1,23 @@
+{
+  "name": "vue-template-merge-load",
+  "version": "1.0.0",
+  "description": "Vue template merge for webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lovah",
+  "license": "MIT",
+  "devDependencies": {},
+  "keywords": [
+    "Vue",
+    "html",
+    "template",
+    "merge",
+    "load",
+    "replace"
+  ],
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  }
+}
