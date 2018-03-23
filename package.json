@@ -1,6 +1,6 @@
 {
   "name": "vue-template-merge-load",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "Vue template merge for webpack",
   "main": "index.js",
   "bugs": {
