@@ -1,6 +1,6 @@
 {
   "name": "vue-template-merge-load",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Vue template merge for webpack",
   "main": "index.js",
   "bugs": {
@@ -21,7 +21,6 @@
     "replace"
   ],
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "vue-template-compiler": "^2.5.16"
+    "cheerio": "^1.0.0-rc.2"
   }
 }

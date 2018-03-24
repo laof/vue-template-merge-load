@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const cheerio = require('cheerio')
-const compiler = require('vue-template-compiler')
+const compiler = require('./lib/build.js')
 
 function resolve(dir) {
   return path.join(__dirname, '..', '..', dir)
