@@ -5,11 +5,17 @@ vue template static insert the HTML file . template combination .
 ```javascript
 	npm install vue-template-merge-load --save-dev
 ```
-## Function
-	function resolve(dir) {
-	    return path.join(__dirname, '..', dir)
-	}
 ## Example 
+### carousel.vue `( Share a model object )`
+
+```html
+	<!-- only static path -->
+	<div require="@/demo1.html"></div>
+	<div require="@/demo2.html"></div>
+	<div require="src/views/demo3.html"></div>
+```
+
+
 ### webpack.base.conf.js `( After add to vue-loader )`
 
 ```javascript
@@ -25,13 +31,10 @@ vue template static insert the HTML file . template combination .
 		}
 	}
 ```
-
-### xxx.vue
-
-```html
-	<!-- only static path -->
-	<div require="@/demo.html"></div>
-```
+### It might be used
+function resolve(dir) {
+return path.join(__dirname, '..', dir)
+}
 
 ## License
 MIT

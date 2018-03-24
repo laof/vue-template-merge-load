@@ -38,7 +38,7 @@ function target(src) {
   try {
     htmlstr = fs.readFileSync(src);
   } catch (e) {
-    htmlstr = '<h6 style="color:red">read file fail ' + src + '</h6>'
+    htmlstr = '<h6 style="color:red">load fail ' + src + '</h6>'
   }
   return htmlstr
 }

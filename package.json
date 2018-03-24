@@ -1,7 +1,7 @@
 {
   "name": "vue-template-merge-load",
-  "version": "1.0.8",
-  "description": "Vue template merge for webpack",
+  "version": "1.0.9",
+  "description": "Vue template load for webpack , Share a model object",
   "main": "index.js",
   "bugs": {
     "url": "https://github.com/laof/vue-template-merge-load/issues"
@@ -13,10 +13,11 @@
   "license": "MIT",
   "devDependencies": {},
   "keywords": [
-    "Vue",
+    "vue",
     "html",
     "template",
     "merge",
+    "share",
     "load",
     "replace"
   ],
