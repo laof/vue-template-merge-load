@@ -6,15 +6,8 @@ module.exports = function (content) {
     this.cacheable()
   }
 
-  const options = loaderUtils.getOptions(this) || {}
+  const options = Object.assign({ attr: 'require', alias: {} }, loaderUtils.getOptions(this))
 
-  options.attr = options.attr || 'require'
-  options.alias = options.alias || {}
-  options._alias = [];
-
-  for (let key in options.alias) {
-    options._alias.push(key)
-  }
 
   return replace(content, options)
 }

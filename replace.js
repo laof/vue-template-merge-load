@@ -9,15 +9,20 @@ function resolve(dir) {
 
 function url(src, opts) {
   src += ''
-  const _alias = opts._alias
   let isAlias = false
 
-  for (const i = 0; i < _alias.length; i++) {
-    const inx = src.indexOf(_alias[i])
+  for (let key in options.alias) {
+
+    const inx = src.indexOf(key)
+
     if (inx > -1) {
+
+      const val = options.alias[key]
+      src = src.replace(key, val)
       isAlias = true
-      src = src.replace(_alias[i], opts.alias[_alias[i]])
+
       break
+
     }
   }
 
@@ -55,7 +60,7 @@ function replace(source, options) {
 
   $('[' + attr + ']').each(function (i, d) {
     const v = $(d)
-    const src = (v.attr(attr) + '').replace(/(^\s*)|(\s*$)/g, "");
+    const src = (v.attr(attr) + '').replace(/(^\s*)|(\s*$)/g, '');
     if (src !== '') {
       v.html(target(url(src, options)))
       v.attr(attr, '')
