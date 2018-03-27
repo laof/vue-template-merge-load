@@ -47,16 +47,10 @@ function url(src, opts) {
 
 function target(src) {
 
-
   const type = postfix(src)
-
-
-  switch (type) {
-    case 'html':
-    case 'vue':
-      break;
-    default:
-      src += '.html'
+  const vue = type === 'vue'
+  if (!type) {
+    src += '.html'
   }
 
   let htmlstr = ''
@@ -64,13 +58,13 @@ function target(src) {
   try {
     htmlstr = fs.readFileSync(src);
 
-    if (type === 'vue') {
-      const vueObj = compiler.parseComponent(htmlstr)
+    if (vue) {
+      const vueObj = compiler.parseComponent(htmlstr + '')
       htmlstr = vueObj.template.content
     }
 
   } catch (e) {
-    htmlstr = '<h6 style="color:red">load fail ' + src + '</h6>'
+    htmlstr = '<h6 style="color:red">fail ' + src + '</h6>'
   }
   return htmlstr
 }
