@@ -11,7 +11,7 @@ vue template static insert the HTML file . template combination .
 ```html
 	<!-- only static path -->
 	<div require="@/demo1.html"></div>
-	<div require="@/demo2.html"></div>
+	<div require="@/demo2.vue"></div>
 	<div require="src/views/demo3.html"></div>
 ```
 
