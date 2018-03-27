@@ -7,17 +7,29 @@ function resolve(dir) {
   return path.join(__dirname, '..', '..', dir)
 }
 
+
+function postfix(str) {
+  const s = (str + '');
+  const pos = s.lastIndexOf('.');
+  const pfstr = str.substring(pos + 1, str.length);
+  if (pos <= 0 || pfstr === '') {
+    return false;
+  }
+  return pfstr.toLocaleLowerCase();
+}
+
+
 function url(src, opts) {
   src += ''
   let isAlias = false
 
-  for (let key in options.alias) {
+  for (let key in opts.alias) {
 
     const inx = src.indexOf(key)
 
     if (inx > -1) {
 
-      const val = options.alias[key]
+      const val = opts.alias[key]
       src = src.replace(key, val)
       isAlias = true
 
@@ -34,14 +46,29 @@ function url(src, opts) {
 }
 
 function target(src) {
-  if (src.indexOf('.html') === -1) {
-    src += '.html'
+
+
+  const type = postfix(src)
+
+
+  switch (type) {
+    case 'html':
+    case 'vue':
+      break;
+    default:
+      src += '.html'
   }
 
   let htmlstr = ''
 
   try {
     htmlstr = fs.readFileSync(src);
+
+    if (type === 'vue') {
+      const vueObj = compiler.parseComponent(htmlstr)
+      htmlstr = vueObj.template.content
+    }
+
   } catch (e) {
     htmlstr = '<h6 style="color:red">load fail ' + src + '</h6>'
   }
